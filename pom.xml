@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.zerock</groupId>
-	<artifactId>controller</artifactId>
-	<name>ex01</name>
+	<groupId>org.mbc</groupId>
+	<artifactId>board</artifactId>
+	<name>MBCBoard</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -31,7 +31,6 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
 		<dependency>
 			<!-- 위에 있는 webmvc를 복사해서 test로 변경 -->
 			<groupId>org.springframework</groupId>
@@ -46,7 +45,7 @@
 			<version>${org.aspectj-version}</version>
 		</dependency>
 
-		<!-- Logging  보안 이슈로 버전 향상 해야 됨
+		<!-- Logging 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -63,8 +62,7 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
-		</dependency>-->
-		<!--
+		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -89,8 +87,84 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
-		
-		-->
+-->
+		<dependency>
+			<!-- 보안 이슈로 log4j2로 향상 -->
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.18.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.18.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.18.0</version>
+		</dependency> <!-- 보안 이슈로 log4j2로 향상 -->
+
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+
+		<!-- Servlet 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+-->
+		<dependency>
+			<!-- p111 서블릿 버전 향상 츠론트 + 컨트롤러-->
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- taglib용 코드 기본내장 -->
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<!-- 보안 이슈로 log4j2로 향상 -->
 			<groupId>org.apache.logging.log4j</groupId>
@@ -123,7 +197,8 @@
 			<scope>provided</scope>
 		</dependency> 서블릿 버전 향상 -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-		<dependency> <!-- p111 서블릿 버전 향상 츠론트 + 컨트롤러-->
+		<dependency>
+			<!-- p111 서블릿 버전 향상 츠론트 + 컨트롤러-->
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
@@ -135,7 +210,8 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency> <!-- taglib용 코드 기본내장 -->
+		<dependency>
+			<!-- taglib용 코드 기본내장 -->
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
@@ -238,13 +314,13 @@
 			<version>1.16</version>
 		</dependency>
 
-<!-- 프론트 결과를 json 타입으로 보이게 설정 https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-<dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.9.4</version>
-</dependency>
-	
+		<!-- 프론트 결과를 json 타입으로 보이게 설정 https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.4</version>
+		</dependency>
+
 	</dependencies> <!-- 의존성 주입 종료 -->
 	<build>
 		<plugins>
@@ -265,10 +341,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version> <!-- 2.5.1 -> 3.5.1 -->
+				<version>3.5.1</version>
 				<configuration>
-					<source>11</source> <!-- 1.6 -> 11 -->
-					<target>11</target> <!-- 1.6 -> 11 -->
+					<source>11</source>
+					<target>11</target>
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
