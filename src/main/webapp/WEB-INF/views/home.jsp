@@ -6,9 +6,10 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	hi
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-</body>
+<!-- model에 있는 데이터를 가져오는 방법 1순위가 ${표현식} --> 
+</body>	
 </html>
