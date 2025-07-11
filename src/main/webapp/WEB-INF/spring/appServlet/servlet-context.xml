@@ -21,8 +21,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="org.mbc.board" />
+	<!-- <context:component-scan base-package="org.mbc.board" /> -->
 	
-	
+		<context:component-scan base-package="org.mbc.controller" />
+		<!-- 컨트롤러를 스프링에 관리 하게 함 -->
 	
 </beans:beans>
